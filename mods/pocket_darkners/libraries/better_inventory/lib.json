@@ -1,0 +1,17 @@
+{
+    "id": "better_inventory",
+    "authors": [
+        "Elioze", 
+        "Simbel"    //Helped with the spacing formula.
+    ],
+    "version": "v1.1.0",
+    "engineVer": "v0.10.0",
+    "config":{
+        "storageMode":             false,   //Make the item menu display and work similar to the storage/equip menu.
+
+        "alwaysShowIndicator":     false,   //Show the page indicator even when there is only one page.
+        "showArrows":              true,    //Whether to show the arrow on the side or not.
+        "pageNumber":              false,   //Show "PAGE: page/last_page" instead of dots. (Forced if math.huge last_page)
+        "smallFontIndicator":      true,    //If the "KEY: key_index/last_key_index" should use a smaller font.
+    }
+}

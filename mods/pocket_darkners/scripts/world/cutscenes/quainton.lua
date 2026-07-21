@@ -1,0 +1,102 @@
+return {
+    dead_berry_bush = function(cutscene, event)
+        cutscene:text("* It's a berry bush.")
+        cutscene:text("* It has,[wait:5] unfortunately,[wait:5] reached its end of service.")
+        if Game:hasPartyMember("quartz") then
+            cutscene:text("* By the time I was brave enough to go this far outside Quainton,", "sad", "quartz")
+            cutscene:text("* most of these berry bushes had already died.", "sad_shuteye", "quartz")
+            if MathUtils.randomInt(0, 2) == 1 then -- 50% chance for special dialogue
+                cutscene:text("* Damn,[wait:5] I can see why Kris's apple shampoo got you so excited.", "annoyed_down", "susie")
+                cutscene:text("* What's an apple?", "confused", "quartz")
+                    if MathUtils.randomInt(0, 5) == 4 then -- additional 20% chance for secondary special dialogue
+                        cutscene:text("* They don't even have APPLES!", "confused", "kris")
+                        cutscene:text("* Arright,[wait:5] you gotta stop memeing under your breath.", "neutral", "susie")
+                    end
+            end
+        end
+    end,
+
+    quartz_firstlook = function(cutscene, event)
+        
+        cutscene:panTo(2300,260,2,"in-out-sine")
+        local quartz = cutscene:getCharacter("quartz")
+        cutscene:wait(2)
+        love.window.setTitle("INTERESTING, THIS WORLD IS NOT ENTIRELY VOID OF LIFE")
+        cutscene:walkTo(quartz,2300,220,2,"up")
+        cutscene:wait(2)
+        -- love.window.setTitle("INTERESTING, THIS WORLD IS NOT ENTIRELY VOID OF LIFE")
+        cutscene:wait(1)
+        cutscene:text("* This one too?", "sad", "quartz")
+        cutscene:text("* There's gotta be some food somewhere...", "sad", "quartz")
+        cutscene:wait(2)
+        cutscene:text("* Wait...", "neutral", "quartz")
+        cutscene:wait(0.5)
+        quartz:setFacing("left")
+        
+        quartz:setAnimation({ "sniff_left",0.25, true })
+        cutscene:text("* I smell something...", "neutral_shuteye", "quartz")
+        local kris = cutscene:getCharacter("kris")
+        local susie = cutscene:getCharacter("susie")
+        local x, y = kris:getPosition()
+        kris:faceTowards(susie)
+        susie:faceTowards(kris)
+        cutscene:wait(2)
+        cutscene:text("* Smells like...", "neutral_shuteye", "quartz")
+        Assets.playSound("alert")
+        quartz:alert()
+        quartz:resetSprite()
+        cutscene:wait(1.5)
+        cutscene:text("* FOOD!!!!", "shocked", "quartz")
+        cutscene:walkTo(quartz,2060,220,1)
+        cutscene:wait(0.2)
+        cutscene:panTo(x,y,2,"in-out-sine")
+        
+        cutscene:wait(0.8)
+        cutscene:walkTo(quartz,2060,300,0.5)
+        susie:setAnimation({ "away_scratch", 0.25, true })
+        cutscene:text("* Wonder what coulda caused this place to get so...[wait:5] dead...", "suspicious", "susie")
+        cutscene:wait(1)
+        cutscene:attachCamera(0)
+        susie:setAnimation({ "away_turn"})
+        cutscene:text("* Wait do you hear something?", "surprise", "susie")
+        cutscene:wait(0.5)
+        
+        cutscene:walkTo(quartz,1240,160,0.01)
+        cutscene:wait(0.2)
+        cutscene:walkTo(quartz,1000,320,0.2)
+        cutscene:wait(0.1)
+        cutscene:walkTo(quartz,(x+40),y,0.2)
+        susie:setAnimation({ "shock_right"})
+        Assets.playSound("wing")
+        cutscene:wait(0.1)
+        --Assets.playSound("wing")
+        --kris:setAnimation({ "shock_right"})
+        cutscene:wait(0.1)
+        kris:explode(0, 0, true)
+        cutscene:wait(0.5)
+        cutscene:startEncounter("quartzintro", nil, {{"quartzintrobattle", quartz}}, {wait = false})
+        
+    end,
+
+    post_quartz_battle = function(cutscene, event)
+        local quartz = cutscene:getCharacter("quartz")
+        local susie = cutscene:getCharacter("susie")
+        susie:resetSprite()
+        quartz:setAnimation({ "bowing" })
+        cutscene:text("* Thank you SO much,[wait:5] like,[wait:5] seriously!", "neutral_shuteye", "quartz")
+        quartz:resetSprite()
+        cutscene:text("* I really needed that!", "happy", "quartz")
+        cutscene:text("* Is there anything I could do to repay you?", "neutral", "quartz")
+        cutscene:text("* Uh...[wait:5] well,[wait:5] d'you know where we are?", "nervous", "susie")
+        cutscene:text("* Oh yeah,[wait:5] I could totally show you around!", "happy", "quartz")
+        quartz:convertToFollower()
+        Game:addPartyMember("quartz")
+        Game.world.player:interpolateFollowers()
+        Assets.playSound("quartz_join")
+        love.window.setTitle("THREE IS A MAGIC NUMBER")
+        cutscene:text("[speed:0.25][noskip]* Quartz joined the party!")
+        cutscene:text("* To the east is Quainton,[wait:5] my home town.", "happy", "quartz")
+        
+    end,
+    
+}
