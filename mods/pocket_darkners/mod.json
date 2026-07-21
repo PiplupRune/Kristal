@@ -9,7 +9,7 @@
     // The version of your project.
     "version": "v0.0.2.5",
     // What version of the engine your project was made with.
-    "engineVer": "v0.10.0",
+    "engineVer": "v0.11.0",
     "money": 0,
 
     // The Deltarune chapter you'd like to base your project off of.
