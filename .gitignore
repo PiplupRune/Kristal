@@ -2,7 +2,7 @@
 .DS_Store
 
 mods/*
-!mods/example/
+!mods/pocket_darkners/
 
 build/
 output/
