@@ -92,7 +92,7 @@ function SpamtogShopQuaintonRiverbed:startTalk(talk)
             self:setFlag("talk_3_1", true)
         end)
     elseif talk == "Other browsers?" then
-        self:startDialogue({"[emote:annoyed]* DON'þ YOU [voice:none][sound:voice/spamtog/no][no!!][voice:spamtog] [voice:none][sound:voice/spamtog/chrome][font:qooqle][Qooqle Chrome™][font:default][voice:spamtog] IS THE BEST [text \"STOP\" to [voice:none][sound:voice/spamtog/tooptout][style:GONER]427837[style:dark][voice:spamtog] to opt out]ION THERE IS!";
+        self:startDialogue({"[emote:annoyed]* DON'þ YOU [voice:none][sound:voice/spamtog/no][no!!][voice:spamtog] [voice:none][sound:voice/spamtog/chrome][font:qooqle][Qooqle Chrome™][font:main][voice:spamtog] IS THE BEST [text \"STOP\" to [voice:none][sound:voice/spamtog/tooptout][style:GONER]427837[style:dark][voice:spamtog] to opt out]ION THERE IS!";
         "[emote:left]* [voice:none][sound:voice/spamtog/internetconquistador][Internet Conquistador™][voice:spamtog] HASN'T BEEN UPD@TED IN YEARS!";
         "[emote:smug]* [voice:none][sound:voice/spamtog/opera][Operahus EX™][voice:spamtog] IS A [color:#5C3EAC]RAM[color:white] HOG!";
         "[emote:left]* [voice:none][sound:voice/spamtog/vulcanvulpes][Modzilla VulcanVulpes™][voice:spamtog] IS...";
@@ -105,8 +105,8 @@ end
 
 function SpamtogShopQuaintonRiverbed:drawMoney()
     Draw.setColor(COLORS.white)
-    love.graphics.setFont(self.font)
-    love.graphics.print(string.format(self.currency_text, self:getMoney()), 440, 420, math.rad(0), 0.6, 1)
+    love.graphics.setFont(Assets.getFont("qooqle"))
+    love.graphics.print(string.format(self.currency_text, self:getMoney()), 440, 420 + 12)
 end
 
 function SpamtogShopQuaintonRiverbed:drawBuyItems(draw_soul)
@@ -143,9 +143,12 @@ function SpamtogShopQuaintonRiverbed:drawBuyItems(draw_soul)
             love.graphics.print(item.options["name"], text_pos, y)
             if not self.hide_price then
                 Draw.setColor(COLORS.white)
-                love.graphics.print(string.format(self.currency_text, item.options["price"] or 0), 260, y, math.rad(0), 0.8, 1)
+                love.graphics.setFont(Assets.getFont("qooqle"))
+                love.graphics.print(string.format(self.currency_text, item.options["price"] or 0), 260, y + 12)
             end
         end
+
+        love.graphics.setFont(self.font)
 
         if draw_soul and (i == self.current_selected_item) then
             -- Draw the soul if we're selecting this option
@@ -178,8 +181,11 @@ function SpamtogShopQuaintonRiverbed:drawSellItems(confirming)
             Draw.setColor(COLORS.white)
             love.graphics.print(item:getName(), 60, 220 + ((i - self.item_offset) * 40))
             if item:isSellable() then
-                love.graphics.print(string.format(self.currency_text, item:getSellPrice()), 260, 220 + ((i - self.item_offset) * 40), math.rad(0), 0.8, 1)
+                love.graphics.setFont(Assets.getFont("qooqle"))
+                love.graphics.print(string.format(self.currency_text, item:getSellPrice()), 260, 220 + ((i - self.item_offset) * 40) + 12)
             end
+
+            love.graphics.setFont(self.font)
         else
             Draw.setColor(COLORS.dkgray)
             love.graphics.print("--------", 60, 220 + ((i - self.item_offset) * 40))
