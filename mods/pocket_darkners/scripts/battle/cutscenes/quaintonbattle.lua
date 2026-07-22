@@ -34,7 +34,10 @@ return {
             quartz:addMercy(100)
             
             love.window.setTitle("THIS DE-ESCALATED RATHER QUICKLY")
-            Game.battle:setState("VICTORY")
+        cutscene:after(function()
+            Game.battle:setState("TRANSITIONOUT")
+            cutscene:gotoCutscene("quainton.post_quartz_battle")
+        end)
         end,
 
 }

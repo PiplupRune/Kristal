@@ -32,7 +32,7 @@ function QuartzIntroBattle:onStateChange(old, new) -- change Encounter to your e
 end
 
 function QuartzIntroBattle:onReturnToWorld(events)
-    Game.world:startCutscene("quainton.post_quartz_battle")
+    
     return super.onReturnToWorld(self, events)
 end
 
