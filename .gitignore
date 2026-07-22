@@ -3,6 +3,7 @@
 
 mods/*
 !mods/pocket_darkners/
+mods/pocket_darkners/pocket_darkners.tiled-session
 
 build/
 output/
