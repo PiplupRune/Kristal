@@ -6,8 +6,7 @@ function SpamtogShopQuaintonRiverbed:init()
     self.encounter_text = "[emote:idle]* HELL   EVRY !![wait:5] IT'S ME, SPAMTOG SPAMTO! !\n[wait:5]* WELCOME TO MY [voice:none][sound:voice/spamtog/itsasecret][It's a secret to everybody][wait:0.75s][voice:spamtog] SHOP!","spamtog" --When you enter the shop
     self.shop_text = "[emote:idle]* [voice:none][sound:voice/spamtog/buysomething][Buy Somethin' Will Ya!][voice:spamtog]" --Flavour text
     self.leaving_text = "[emote:crazy]* YOU CAN NEVER ESCAPE!" --Upon exiting
-    self.buy_menu_text = "[emote:idle]DO YOU LIKE MY [voice:none][sound:voice/spamtog/wears][wears][voice:spamtog]??" -- Text when in the BUY menu
-    self.buy_confirmation_text = "[emote:smug]\nFOR JUST\n%s CHROME" -- Buy confirmation. The % is the amount of money. Don't delete it.
+    self.buy_menu_text = "[emote:idle]DO YOU\nLIKE MY\n[voice:none][sound:voice/spamtog/wears][wears][voice:spamtog]??" -- Text when in the BUY menu
     self.buy_refuse_text = "[emote:annoyed]NOT GOOD ENOUGH FOR [voice:none][sound:voice/spamtog/you][u][voice:spamtog], EH?" -- If you refuse to purchase
     self.buy_text = "[emote:crazy]MUCH [voice:none][sound:voice/spamtog/depreciated][depreciated][voice:spamtog]!!" --If you successfully buy an item
     self.buy_storage_text = "[emote:idle]I PUT THAT IN YOUR [voice:none][sound:voice/spamtog/storage][Storage Wars][voice:spamtog]" -- If you have no INV space, and the item goes to STORAGE
@@ -16,10 +15,10 @@ function SpamtogShopQuaintonRiverbed:init()
     self.sell_no_price_text = "[emote:annoyed]OFFER DECLINED" -- If you can't sell the item (see Wood sword)
     self.sell_menu_text = "[emote:crazy]A [voice:none][sound:voice/spamtog/presents][presents][voice:spamtog] FOR [voice:none][sound:voice/spamtog/lilolme][lil' ol' me][voice:spamtog]?!" --Offering to sell
     self.sell_nothing_text = "[emote:smug]YOU [voice:none][sound:voice/spamtog/literate][literate][voice:spamtog]LY HAVE NOTHING" -- If you have nothing to sell
-    self.sell_confirmation_text = "[emote:crazy]I'LL TAKE IT FOR\n%s CHROME" -- Confirming a sale
     self.sell_refuse_text = "[emote:annoyed]NO CHROME FOR YOU" -- If you cancel a selling
     -- Shown when you sell something
     self.sell_text = "[emote:idle]CHROME FOR YOU!"
+    self.sell_everything_text = "[emote:idle]CHROME FOR YOU!"
     -- Shown when you have nothing in a storage
     self.sell_no_storage_text = "[emote:annoyed]WHAT AM I EVEN [voice:none][sound:voice/spamtog/men][men!][voice:spamtog]t 2 B LOOKING @"
     -- Shown when you enter the talk menu.
@@ -50,7 +49,6 @@ function SpamtogShopQuaintonRiverbed:init()
     self:registerTalkAfter("Error 401?", 2, "talk_2_1", true)
     self:registerTalk("Why do you want chrome?")
     self:registerTalkAfter("Other browsers?", 3, "talk_3_1", true)
-    
 end
 
 function SpamtogShopQuaintonRiverbed:startTalk(talk)
@@ -102,6 +100,131 @@ function SpamtogShopQuaintonRiverbed:startTalk(talk)
         "[emote:smug]* I'LL [voice:none][sound:voice/spamtog/except][except][voice:spamtog] YOvR PO CK[wait:2]E T CHAN[wait:3]GE,[wait:5] THOUGH!"}, function ()
             self.shopkeeper:setSprite("talk")
         end)
+    end
+end
+
+function SpamtogShopQuaintonRiverbed:drawMoney()
+    Draw.setColor(COLORS.white)
+    love.graphics.setFont(self.font)
+    love.graphics.print(string.format(self.currency_text, self:getMoney()), 440, 420, math.rad(0), 0.6, 1)
+end
+
+function SpamtogShopQuaintonRiverbed:drawBuyItems(draw_soul)
+    local heart_pos = 30
+    local text_pos = 60
+
+    local total_items = #self.items + 1
+    local visible_items = 5
+
+    local first_item = 1 + self.item_offset
+    local last_item = self.item_offset + visible_items
+
+    local return_index = math.max(last_item, total_items)
+
+    -- Show items
+    for i = first_item, last_item do
+        local y = 220 + ((i - self.item_offset) * 40)
+        local item = self.items[i]
+
+        if i == return_index then
+            Draw.setColor(COLORS.white)
+            love.graphics.print("Exit", text_pos, y)
+        elseif item == nil then
+            -- If there's no item there, show empty slot
+            Draw.setColor(COLORS.dkgray)
+            love.graphics.print("--------", text_pos, y)
+        elseif item.options["stock"] and (item.options["stock"] <= 0) then
+            -- If we've depleted the stock, show a "sold out" message
+            Draw.setColor(COLORS.gray)
+            love.graphics.print("--SOLD OUT--", text_pos, y)
+        else
+            -- Valid item, show it
+            Draw.setColor(item.options["color"])
+            love.graphics.print(item.options["name"], text_pos, y)
+            if not self.hide_price then
+                Draw.setColor(COLORS.white)
+                love.graphics.print(string.format(self.currency_text, item.options["price"] or 0), 260, y, math.rad(0), 0.8, 1)
+            end
+        end
+
+        if draw_soul and (i == self.current_selected_item) then
+            -- Draw the soul if we're selecting this option
+            Draw.setColor(Game:getSoulColor())
+            Draw.draw(self.heart_sprite, heart_pos, y + 10)
+        end
+    end
+end
+
+function SpamtogShopQuaintonRiverbed:drawSellItems(confirming)
+    local inventory = Game.inventory:getStorage(self.selected_storage)
+
+    if inventory == nil then
+        Draw.setColor(COLORS.ltgray)
+        love.graphics.print("Invalid storage", 60, 260)
+        return
+    end
+
+    -- Draw the soul
+    Draw.setColor(Game:getSoulColor())
+    Draw.draw(self.heart_sprite, 30, 230 + ((self.current_selected_item - self.item_offset) * 40))
+
+    Draw.setColor(COLORS.white)
+
+    for i = 1 + self.item_offset, self.item_offset + math.min(5, inventory.max) do
+        local item = inventory[i]
+        love.graphics.setFont(self.font)
+
+        if item then
+            Draw.setColor(COLORS.white)
+            love.graphics.print(item:getName(), 60, 220 + ((i - self.item_offset) * 40))
+            if item:isSellable() then
+                love.graphics.print(string.format(self.currency_text, item:getSellPrice()), 260, 220 + ((i - self.item_offset) * 40), math.rad(0), 0.8, 1)
+            end
+        else
+            Draw.setColor(COLORS.dkgray)
+            love.graphics.print("--------", 60, 220 + ((i - self.item_offset) * 40))
+        end
+    end
+
+    local max = inventory.max
+    if inventory.sorted then
+        max = #inventory
+    end
+
+    Draw.setColor(COLORS.white)
+
+    if max > 5 then
+        for i = 1, max do
+            local percentage = (i - 1) / (max - 1)
+            local height = 129
+
+            local draw_location = percentage * height
+
+            local tocheck = self.current_selected_item
+
+            if confirming and (Game.chapter <= 2) then
+                -- DR bug -- if in the confirming menu, use the wrong variable
+                -- TODO: Game.chapter usage!
+                tocheck = self.current_selecting_choice
+            end
+
+            if i == tocheck then
+                love.graphics.rectangle("fill", 372, 292 + draw_location, 9, 9)
+            elseif inventory.sorted then
+                love.graphics.rectangle("fill", 372 + 3, 292 + 3 + draw_location, 3, 3)
+            end
+        end
+
+        -- Draw arrows
+        if not confirming then
+            local sine_off = math.sin((Kristal.getTime() * 30) / 6) * 3
+            if self.item_offset + 4 < (max - 1) then
+                Draw.draw(self.arrow_sprite, 370, 149 + sine_off + 291)
+            end
+            if self.item_offset > 0 then
+                Draw.draw(self.arrow_sprite, 370, 14 - sine_off + 291 - 25, 0, 1, -1)
+            end
+        end
     end
 end
 
