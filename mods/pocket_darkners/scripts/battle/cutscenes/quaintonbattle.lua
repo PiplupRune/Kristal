@@ -25,11 +25,12 @@ return {
             Game.battle.battle_ui.action_boxes[2].buttons[2].disabled=true
             Game.battle.battle_ui.action_boxes[2].buttons[3].disabled=true
             Game.battle.battle_ui.action_boxes[2].buttons[5].disabled=true
+           cutscene:after(function()
+            Game.battle:nextTurn()
             local battler = Game.battle:getActiveParty()[2]
-                if battler then
-                    Game.battle:pushForcedAction(battler, "SKIP", Game.battle:getActiveEnemies()[1], nil, {})
-                end
-
+                Kristal.Console:warn(battler)
+            Game.battle:pushForcedAction(battler, "SKIP", Game.battle:getActiveEnemies()[1], nil, {})
+            end)
         end,
 
     quartz_fed = function(cutscene, event)
