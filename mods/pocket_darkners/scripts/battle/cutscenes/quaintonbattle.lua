@@ -36,7 +36,7 @@ return {
             love.window.setTitle("THIS DE-ESCALATED RATHER QUICKLY")
         cutscene:after(function()
             Game.battle:setState("TRANSITIONOUT")
-            cutscene:gotoCutscene("quainton.post_quartz_battle")
+            cutscene:gotoCutscene("quainton", "post_quartz_battle")
         end)
         end,
 
