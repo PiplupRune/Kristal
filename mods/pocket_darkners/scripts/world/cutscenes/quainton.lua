@@ -75,10 +75,7 @@ return {
         kris:explode(0, 0, true)
         cutscene:wait(0.5)
         cutscene:startEncounter("quartzintro", nil, {{"quartzintrobattle", quartz}}, {wait = false})
-        
-    end,
-
-    post_quartz_battle = function(cutscene, event)
+        cutscene:wait(4)
         local quartz = cutscene:getCharacter("quartz")
         local susie = cutscene:getCharacter("susie")
         susie:resetSprite()
@@ -98,5 +95,7 @@ return {
         cutscene:text("* To the east is Quainton,[wait:5] my home town.", "happy", "quartz")
         
     end,
+
+
     
 }
