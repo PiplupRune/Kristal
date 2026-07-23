@@ -4,10 +4,10 @@
     // Displays on the main menu.
     "name": "PiplupRune",
     // Displays underneath the name. Optional.
-    "subtitle": "Making waves lol",
+    "subtitle": "We're a team and this is great",
 
     // The version of your project.
-    "version": "v0.0.2.5.3",
+    "version": "v0.0.2.5.4",
     // What version of the engine your project was made with.
     "engineVer": "v0.11.0-dev",
     "money": 0,

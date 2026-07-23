@@ -13,5 +13,8 @@ THIS IS THE VERSION LIST
 0.0.2.4 - Set base chapter to 4, fixed extra Quartz after cutscene, and added SideRazorLeaf
 0.0.2.5.2 - Migrated to Github, polished the Quartz encounter, and begun work on SideVineWhip which is currently broken.
 0.0.2.5.3 - Polished up Spamtog's shop a bit, and optimised some of the SideVineWhip's code. Still broken though.
+0.0.2.5.4 - Added Quartz's new portraits, and further polished Spamtog. The Quartz encounter is also no longer crashing or softlocking, but the item use is currently screwed up.
 
-NOTES - Quainton's theme currently plays in the riverbed map, this will be changed later.
+NOTES
+
+Nothing of note for now
