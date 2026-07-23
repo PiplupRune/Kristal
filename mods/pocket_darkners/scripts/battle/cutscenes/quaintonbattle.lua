@@ -37,12 +37,11 @@ return {
             cutscene:battlerText("quartzintrobattle","Oh my goodness\nthank you so much!!")
             local quartz = cutscene:getCharacter("quartzintrobattle")
             quartz:addMercy(100)
-            
             love.window.setTitle("THIS DE-ESCALATED RATHER QUICKLY")
         cutscene:after(function()
             Game.battle:setState("TRANSITIONOUT")
-            cutscene:gotoCutscene("quainton", "post_quartz_battle")
+            Game.world:startCutscene("quainton", "post_quartz_battle")
         end)
-        end,
+    end,
 
 }
