@@ -91,12 +91,11 @@ return {
         cutscene:text("* Oh yeah,[wait:5] I could totally show you around!", "happy", "quartz")
         quartz:convertToFollower()
         Game:addPartyMember("quartz")
-        Game.world.player:interpolateFollowers()
+        cutscene:interpolateFollowers()
         Assets.playSound("quartz_join")
         love.window.setTitle("THREE IS A MAGIC NUMBER")
         cutscene:text("[speed:0.25][noskip]* Quartz joined the party!")
-        cutscene:text("* To the east is Quainton,[wait:5] my home town.", "happy", "quartz")
-        
+        cutscene:text("* To the east is Quainton,[wait:5] my home town.", "happy", "quartz")       
     end,
     
 }
