@@ -16,7 +16,7 @@ return {
             cutscene:battlerText("susie","I'm Susie,[wait:5], a-[next]", {right = true, x = 150, y = 220})
             cutscene:battlerText("susie","Wait,[wait:5] you said you haven't\neaten in HOW long?!", {right = true, x = 150, y = 220})
             cutscene:battlerText("quartzintrobattle","Well,[wait:5] nothing grows here anymore.[wait:5]\nAll of the bushes are dead.")
-            cutscene:battlerText("susie","Uh,[wait:2] Kris,[wait:5] do we have\nanything we could give them?", {right = true, x = 150, y = 220})
+            cutscene:battlerText("susie","Uhhhhhhhhh Kris,[wait:5] do we have\nanything we could give them?", {right = true, x = 150, y = 220})
             Game.battle.battle_ui.action_boxes[1].buttons[1].disabled=true
             Game.battle.battle_ui.action_boxes[1].buttons[2].disabled=true
             Game.battle.battle_ui.action_boxes[1].buttons[4].disabled=true
@@ -36,11 +36,12 @@ return {
     quartz_fed = function(cutscene, event)
             cutscene:battlerText("quartzintrobattle","Oh my goodness\nthank you so much!!")
             local quartz = cutscene:getCharacter("quartzintrobattle")
-            quartz:addMercy(100)     
+            quartz:addMercy(100)
+            
             love.window.setTitle("THIS DE-ESCALATED RATHER QUICKLY")
-            cutscene:after(function()
+        cutscene:after(function()
             Game.battle:setState("TRANSITIONOUT")
-            Game.world:startCutscene("quainton", "post_quartz_battle")
+            cutscene:gotoCutscene("quainton", "post_quartz_battle")
         end)
         end,
 

@@ -58,7 +58,7 @@ function item:init()
 end
 
 function item:onBattleUse(user, target)
-    Game.battle:startCutscene("quaintonbattle.quartz_fed")
+        Game.battle:startCutscene("quaintonbattle.quartz_fed")
 end
 
 
