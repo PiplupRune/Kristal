@@ -152,7 +152,7 @@ function DarkBerryMenu:update()
                         Game.world.menu:partySelect("SINGLE", function(success, party)
                             self.state = "VIEW_BAG"
                             if success and party then
-                                selected_berry:onUse(party)
+                                selected_berry:onWorldUse(party)
                                 Game.inventory:removeItem(selected_berry)
                             end
                             self:updateSelectedItem()
