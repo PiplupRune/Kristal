@@ -18,6 +18,7 @@ THIS IS THE VERSION LIST
 0.0.2.5.6 - Buster Flinching has been added.
 0.0.2.5.7 - Removed an unneeded library, and started work on the new Dismal Chambers tileset
 0.0.2.5.8 - Added Spamtog's new "error" emote. Currently doesn't animate.
+0.0.2.5.9 - Berry menu. Slightly changed Oran Berry description.
 
 NOTES
 
