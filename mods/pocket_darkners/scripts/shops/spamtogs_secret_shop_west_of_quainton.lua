@@ -72,7 +72,7 @@ function SpamtogShopQuaintonRiverbed:startTalk(talk)
         "* HOW DOES [voice:none][sound:voice/spamtog/one][one (1)][voice:spamtog] BECOME A [voice:none][sound:voice/spamtog/shot][shot][voice:spamtog]?";
         "* WELL,[wait:5][emote:smug] I'M GLAD YOU ASKED!";
         "* TO BE THE [voice:none][sound:voice/spamtog/shot][shot][voice:spamtog] YOU'VE ALWAYS WANTED [voice:none][sound:voice/spamtog/two][two (2)][voice:spamtog] BE,[wait:5] ALL YOU NEED IS...";
-        "* A HEALTHY DOSE OF [voice:none][sound:voice/spamtog/error401][ERROR 401 FILE ACCESS DENIED][voice:spamtog]!";
+        "* A HEALTHY DOSE OF [emote:error_talk][voice:none][sound:voice/spamtog/error401][ERROR 401 FILE ACCESS DENIED][voice:spamtog]!"; -- Fix this at some point
         "[emote:smug]* EH?[wait:5] SOUND [voice:none][sound:voice/spamtog/intoxicating][intoxicating][voice:spamtog]?[wait:5]IF YOU'RE [voice:none][sound:voice/spamtog/interest][interest rates are through the][voice:spamtog],[wait:5] JUST [voice:none][sound:voice/spamtog/clickorcall][click or call today][voice:spamtog]!"}, function()
             -- This flag is set, so Kristal knows replace this 
             -- dialogue option with "Error 401"
