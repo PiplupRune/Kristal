@@ -21,12 +21,12 @@ function EnemyBattler:giveStatus(status, msg, debuff_options)
     self:onStatused(status, self.can_give_status)
     if self.can_give_status then 
     if status == "flinch" then 
-    --   if love.math.random(1, 10) <= 3 then 
-        Kristal.Console:warn("raagh...")
+    if love.math.random(1, 10) <= 3 then 
+      --  Kristal.Console:warn("raagh...")
         self:statusMessage("msg", "flinched")
         self:debuffEffect(debuff_options)
         self.affect_waves = true 
-       -- end 
+    end 
     end 
 end 
 end 
@@ -35,7 +35,7 @@ function EnemyBattler:debuffEffect(options)
     options = options or {}
     options.color = options.color or COLORS.red
 
-    local snd = Assets.playSound("stat_fell")
+    local snd = Assets.playSound("stat_fell", 0.8)
     local my_fx = ShaderFX("debuff") 
     local peak = options.full_intensity or 0.7 
     my_fx.shader:send("tint_color", options.color)
