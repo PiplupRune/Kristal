@@ -1,14 +1,12 @@
-local item, super = Class(HealItem, "cheri_berry")
+local item, super = Class(HealItem, "pokepotion_normal")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Cheri Berry"
+    self.name = "Potion"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
-    -- Makes it so that it is a berry.
-    self.berry_type = true  
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
@@ -16,25 +14,23 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "Cures\nPARALYSIS"
+    self.effect = "Heals\n20HP"
     -- Shop description
-    self.shop = "Peculiar\nfruit\nCures PRYLZ"
+    self.shop = "Sprayable\nmedicine\nheals 20HP"
     -- Menu description
-    self.description = "A fruit that is rather spicy.\nTastes vaguely like a cherry. Cures PARALYSIS"
+    self.description = "Cheap sprayable medicine in a purple bottle.\nHeals and sterilizes wounds. +20HP"
 
     -- Amount healed (HealItem variable)
-    --self.heal_amount = 20
+    self.heal_amount = 20
     -- Amount this item heals for specific characters in the overworld (optional)
-    --self.world_heal_amounts = {
-    -- NATURES
-    -- Kris: Serious - Neutral effects from all berries
-    -- Susie: Rash - Prefers dry, dislikes bitter
-    -- Quartz: Timid - Prefers sweet, dislikes sour
-     --   ["quartz"] = 15
-    --}
+    self.world_heal_amounts = {
+    -- Potions sting because they sterilise wounds
+        ["susie"] = 17,
+        ["quartz"] = 19
+    }
 
     -- Default shop price (sell price is halved)
-    self.price = 2
+    self.price = 30
     -- Whether the item can be sold
     self.can_sell = true
 
@@ -58,9 +54,9 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        kris = "sample text", -- give dialogue
-        susie = "sample text", -- give dialogue
-        quartz = "sample text", -- give dialogue
+        kris = "Tastes... purple.",
+        susie = "Damn, that stings!",
+        quartz = "(Sharp inhale)",
     }
 end
 

@@ -1,14 +1,12 @@
-local item, super = Class(HealItem, "cheri_berry")
+local item, super = Class(HealItem, "pokepotion_hyper")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Cheri Berry"
+    self.name = "HypPotion"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
-    -- Makes it so that it is a berry.
-    self.berry_type = true  
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
@@ -16,25 +14,23 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "Cures\nPARALYSIS"
+    self.effect = "Heals\n120HP"
     -- Shop description
-    self.shop = "Peculiar\nfruit\nCures PRYLZ"
+    self.shop = "Sprayable\nmedicine\nheals 120HP"
     -- Menu description
-    self.description = "A fruit that is rather spicy.\nTastes vaguely like a cherry. Cures PARALYSIS"
+    self.description = "High-end sprayable medicine in a pink bottle.\nHeals and sterilizes wounds very well. +120HP"
 
     -- Amount healed (HealItem variable)
-    --self.heal_amount = 20
+    self.heal_amount = 120
     -- Amount this item heals for specific characters in the overworld (optional)
     --self.world_heal_amounts = {
     -- NATURES
-    -- Kris: Serious - Neutral effects from all berries
-    -- Susie: Rash - Prefers dry, dislikes bitter
-    -- Quartz: Timid - Prefers sweet, dislikes sour
-     --   ["quartz"] = 15
+    -- Susie: Potions sting because they sterilise wounds, and Susie isn't particularly expecting that I guess?
+    --    ["susie"] = 50
     --}
 
     -- Default shop price (sell price is halved)
-    self.price = 2
+    self.price = 150
     -- Whether the item can be sold
     self.can_sell = true
 
@@ -58,8 +54,8 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        kris = "sample text", -- give dialogue
-        susie = "sample text", -- give dialogue
+        kris = "Tastes... pink.",
+        susie = "sample text",  -- give dialogue
         quartz = "sample text", -- give dialogue
     }
 end

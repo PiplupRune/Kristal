@@ -1,10 +1,10 @@
-local item, super = Class(HealItem, "cheri_berry")
+local item, super = Class(HealItem, "sitrus_berry")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Cheri Berry"
+    self.name = "Sitrus Berry"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
     -- Makes it so that it is a berry.
@@ -16,22 +16,22 @@ function item:init()
     self.icon = nil
 
     -- Battle description
-    self.effect = "Cures\nPARALYSIS"
+    self.effect = "Heals\n30HP"
     -- Shop description
-    self.shop = "Peculiar\nfruit\nCures PRYLZ"
+    self.shop = "Peculiar\nfruit\nheals 30HP"
     -- Menu description
-    self.description = "A fruit that is rather spicy.\nTastes vaguely like a cherry. Cures PARALYSIS"
+    self.description = "A fruit that is large, smooth, and unspicy.\nTastes vaguely like an citron. +30HP"
 
     -- Amount healed (HealItem variable)
-    --self.heal_amount = 20
+    self.heal_amount = 30
     -- Amount this item heals for specific characters in the overworld (optional)
-    --self.world_heal_amounts = {
+    self.world_heal_amounts = {
     -- NATURES
     -- Kris: Serious - Neutral effects from all berries
     -- Susie: Rash - Prefers dry, dislikes bitter
     -- Quartz: Timid - Prefers sweet, dislikes sour
-     --   ["quartz"] = 15
-    --}
+    --    ["quartz"] = 25
+    }
 
     -- Default shop price (sell price is halved)
     self.price = 2
