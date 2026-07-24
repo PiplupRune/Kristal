@@ -133,7 +133,7 @@ function DarkBerryMenu:update()
             self.selected_option = 1
             self:updateSelectedItem()
         end
-    elseif self.state == "VIEW_BAG" then
+       elseif self.state == "VIEW_BAG" then
         if Input.pressed("cancel") then
             Assets.stopAndPlaySound("ui_cancel_small")
             self.selected_option = (self.current_pocket == "SEEDS") and 2 or 1
@@ -152,10 +152,8 @@ function DarkBerryMenu:update()
                         Game.world.menu:partySelect("SINGLE", function(success, party)
                             self.state = "VIEW_BAG"
                             if success and party then
-                                selected_berry:onWorldUse(party)
-                                Game.inventory:removeItem(selected_berry)
+                                self:useItem(selected_berry, party)
                             end
-                            self:updateSelectedItem()
                         end)
                     else
                         Assets.stopAndPlaySound("ui_cant_select")
@@ -164,8 +162,31 @@ function DarkBerryMenu:update()
             end
         end
     end
-
     super.update(self)
+end
+
+function DarkBerryMenu:useItem(item, party)
+    local result = item:onWorldUse(party)
+    if isClass(party) then
+        party = {party}
+    end
+    for _, char in ipairs(party) do
+        for index, chara in ipairs(Game.party) do
+            local reaction = chara:getReaction(item, char)
+            if reaction then
+                Game.world.healthbar.action_boxes[index].reaction_alpha = 50
+                Game.world.healthbar.action_boxes[index].reaction_text = reaction
+            end
+        end
+    end
+    if (item.type == "item" and (result == nil or result)) or (item.type ~= "item" and result) then
+        if item:hasResultItem() then
+            Game.inventory:replaceItem(item, item:createResultItem())
+        else
+            Game.inventory:removeItem(item)
+        end
+    end
+    self:updateSelectedItem()
 end
 
 
