@@ -18,13 +18,34 @@ end
 function DarkBerryMenu:getBerries()
     local raw_storage = Game.inventory:getStorage("items") or {}
     local berries = {}
+    
     for _, item in ipairs(raw_storage) do
         if item and item.berry_type then
             table.insert(berries, item)
         end
     end
+    table.sort(berries, function(a, b)
+        return string.lower(a:getName()) < string.lower(b:getName())
+    end)
+    
     return berries
 end
+
+function DarkBerryMenu:getSeeds()
+    local raw_storage = Game.inventory:getStorage("items") or {}
+    local seeds = {}
+    
+    for _, item in ipairs(raw_storage) do
+        if item and item.seed_type then
+            table.insert(seeds, item)
+        end
+    end
+    table.sort(seeds, function(a, b)
+        return string.lower(a:getName()) < string.lower(b:getName())
+    end)
+    return seeds
+end
+
 
 function DarkBerryMenu:getSeeds()
     local raw_storage = Game.inventory:getStorage("items") or {}
