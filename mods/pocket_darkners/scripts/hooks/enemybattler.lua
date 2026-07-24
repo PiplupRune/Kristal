@@ -34,7 +34,6 @@ end
 function EnemyBattler:debuffEffect(options)
     options = options or {}
     options.color = options.color or COLORS.red
-
     local snd = Assets.playSound("stat_fell", 0.8)
     local my_fx = ShaderFX("debuff") 
     local peak = options.full_intensity or 0.7 
@@ -42,12 +41,10 @@ function EnemyBattler:debuffEffect(options)
     my_fx.shader:send("intensity", 0.0)
     my_fx.shader:send("scroll_y", 0.0)
     self:addFX(my_fx) 
-    
     local current_scroll = 0
     local duration = snd:getDuration()
     local q_duration = duration / 4
     local h_duration = duration / 2
-    
     Game.battle.timer:approach(q_duration, 0.0, peak, function(v)
         current_scroll = (current_scroll + (0.02 * DTMULT)) % 1.0
         my_fx.shader:send("scroll_y", current_scroll)
