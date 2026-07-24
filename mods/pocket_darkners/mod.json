@@ -4,10 +4,10 @@
     // Displays on the main menu.
     "name": "PiplupRune",
     // Displays underneath the name. Optional.
-    "subtitle": "Get flinched, idiot",
+    "subtitle": "The Bluins",
 
     // The version of your project.
-    "version": "v0.0.2.5.6",
+    "version": "v0.0.2.5.7",
     // What version of the engine your project was made with.
     "engineVer": "v0.11.0-dev",
     "money": 0,

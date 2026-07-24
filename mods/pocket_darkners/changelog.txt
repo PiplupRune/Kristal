@@ -16,6 +16,7 @@ THIS IS THE VERSION LIST
 0.0.2.5.4 - Added Quartz's new portraits, and further polished Spamtog. The Quartz encounter is also no longer crashing or softlocking, but the item use is currently screwed up. Shop is also updated.
 0.0.2.5.5 - Quartz's encounter should be fully functional again.
 0.0.2.5.6 - Buster Flinching has been added.
+0.0.2.5.7 - Removed an unneeded library, and started work on the new Dismal Chambers tileset
 
 NOTES
 
