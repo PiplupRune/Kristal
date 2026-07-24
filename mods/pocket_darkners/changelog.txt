@@ -22,6 +22,8 @@ THIS IS THE VERSION LIST
 0.0.2.5.10 - Berry bag fully works now I think
 0.0.2.5.11 - Rals added an alphabetical sorting function
 
+This changelog will no longer be updated. Check the one on the Discord.
+
 NOTES
 
 Nothing of note for now
