@@ -4,8 +4,7 @@ local DarkInventory, super = Class("DarkInventory", true)
 
 function DarkInventory:init()
     super.init(self)
-
-    self.storage_for_type["badge"] = "badges"
+    self.storage_for_type["berries"] = "berries"
 end
 
 return DarkInventory

@@ -7,6 +7,7 @@ function item:init()
     self.name = "Oran Berry"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
+    self.berry_type = true  
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
