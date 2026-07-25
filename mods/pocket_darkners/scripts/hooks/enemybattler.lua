@@ -22,14 +22,19 @@ function EnemyBattler:getNextWaves()
     end 
 end 
 
+---@param status The status that should be cured.
 function EnemyBattler:cure(status) 
+    self:statusMessage("msg", "cured")
+    if status == "poison" then 
+        self.poison = false 
+    end 
+end
 
-return end 
-
-
----@ param sYeah
+---@param status Which status was given. 
+---@param worked Was the status successfully given.
 function EnemyBattler:onStatused(status, worked) return end  
 
+---@param status The status to give. For now, only `flinch` and `poison` can be given. 
 function EnemyBattler:giveStatus(status, msg)
     self:onStatused(status, self.can_give_status)
     if self.can_give_status then 
@@ -66,7 +71,8 @@ function EnemyBattler:takePoisonDamage()
     self:hurt(MathUtils.roundFromZero(self.max_health / 8), nil, nil, ColorUtils.hexToRGB("B868A0"))
 end
 
-
+---@param color What color should the flashing be? 
+---@param full_intensity What should be the opacity of the color? 
 function EnemyBattler:debuffEffect(color, full_intensity)
     local snd = Assets.playSound("stat_fell", 0.8)
     local my_fx = ShaderFX("debuff") 
@@ -99,8 +105,5 @@ function EnemyBattler:debuffEffect(color, full_intensity)
         end)
     end)
 end 
-
-
-
 
 return EnemyBattler
