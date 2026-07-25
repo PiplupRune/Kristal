@@ -74,7 +74,7 @@ function Dummy:onAct(battler, name)
     elseif name == "POISON" then 
         self:giveStatus("poison")
         return "* Oof"
-    elseif name == "FLINCH"
+    elseif name == "FLINCH" then 
         self:giveStatus("flinch")
         return "* Oof"
 
