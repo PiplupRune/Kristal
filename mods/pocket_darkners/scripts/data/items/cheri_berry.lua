@@ -18,7 +18,7 @@ function item:init()
     -- Battle description
     self.effect = "Cures\nPARALYSIS"
     -- Shop description
-    self.shop = "Peculiar\nfruit\nCures PRYLZ"
+    self.shop = "Peculiar\nfruit\ncures\nPARALYSIS"
     -- Menu description
     self.description = "A fruit that is rather spicy.\nTastes vaguely like a cherry. Cures PARALYSIS"
 
