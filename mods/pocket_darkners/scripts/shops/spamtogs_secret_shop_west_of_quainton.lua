@@ -24,7 +24,7 @@ function SpamtogShopQuaintonRiverbed:init()
     -- Shown when you enter the talk menu.
     self.talk_text = "[emote:smug]WHA7 CAN I D0 YOU FOR, LI<< NERS?"
 
-    self.currency_text = "%d CHROME"
+    self.currency_text = "%d Chrome"
 
     self.sell_options_text = {}
     self.sell_options_text["items"]   = "[emote:idle]ITEMS FOR CHROME?"
