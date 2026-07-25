@@ -13,6 +13,15 @@ function EnemyBattler:hurt(amount, ...)
     super.hurt(self, amount, ...)
 end 
 
+function EnemyBattler:getNextWaves()
+    if self.affect_waves then
+        self.affect_waves = false  
+       return {"hidden"}
+    else 
+        return super.getNextWaves(self)
+    end 
+end 
+
 ---@ param sYeah
 function EnemyBattler:onStatused(status, worked) return end  
 
