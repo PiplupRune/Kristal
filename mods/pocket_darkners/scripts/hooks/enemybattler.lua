@@ -53,6 +53,20 @@ function EnemyBattler:giveStatus(status, msg)
 end 
 end 
 
+function EnemyBattler:takePoisonDamage()
+    local mask = ColorMaskFX(ColorUtils.hexToRGB("B868A0"))
+    mask.amount = 0 
+    self:addFX(mask)
+    local snd = Assets.playSound("poison", 2)
+    local tween = snd:getDuration() / 2
+    Game.battle.timer:tween(tween, mask, {amount = 1}, "linear", function()
+    Game.battle.timer:tween(tween, mask, {amount = 0})
+    end)
+    self.hit_count = 0
+    self:hurt(MathUtils.roundFromZero(self.max_health / 8), nil, nil, ColorUtils.hexToRGB("B868A0"))
+end
+
+
 function EnemyBattler:debuffEffect(color, full_intensity)
     local snd = Assets.playSound("stat_fell", 0.8)
     local my_fx = ShaderFX("debuff") 
