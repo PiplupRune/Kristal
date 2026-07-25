@@ -8,8 +8,7 @@ function item:init()
     -- Name displayed when used in battle (optional)
     self.use_name = nil
     -- Makes it so that it is a berry.
-    self.berry_type = true  
-
+    self.backpack_type = "berries" 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Item icon (for equipment)
@@ -20,7 +19,7 @@ function item:init()
     -- Shop description
     self.shop = "Peculiar\nfruit\ncures\nPARALYSIS"
     -- Menu description
-    self.description = "A fruit that is rather spicy.\nTastes vaguely like a cherry. Cures PARALYSIS"
+    self.description = "A fruit that is rather spicy.\nTastes vaguely like a cherry. Cures [color:yellow]PARALYSIS[color:reset]!"
 
     -- Amount healed (HealItem variable)
     --self.heal_amount = 20
