@@ -57,8 +57,9 @@ function Dummy:init()
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
     self:registerAct("Tell Story", "", {"ralsei"})
-     self:registerAct("POISON")
-      self:registerAct("FLINCH")
+    self:registerAct("POISON")
+    self:registerAct("FLINCH")
+    self:registerAct("ELECTRICITY")
 end
 
 function Dummy:onAct(battler, name)
@@ -77,6 +78,9 @@ function Dummy:onAct(battler, name)
         return "* Oof"
     elseif name == "FLINCH" then 
         self:giveStatus("flinch")
+        return "* Oof"
+    elseif name == "ELECTRICITY" then 
+        self:giveStatus("paralysis")
         return "* Oof"
 
     elseif name == "Tell Story" then
