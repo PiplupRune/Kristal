@@ -22,6 +22,11 @@ function EnemyBattler:getNextWaves()
     end 
 end 
 
+function EnemyBattler:cure(status) 
+
+return end 
+
+
 ---@ param sYeah
 function EnemyBattler:onStatused(status, worked) return end  
 
@@ -34,7 +39,17 @@ function EnemyBattler:giveStatus(status, msg)
         self:debuffEffect(ColorUtils.hexToRGB("EFC55B"))
         self.affect_waves = true 
     end 
-    end 
+    elseif status == "poison" then  
+        self.poison = true 
+        local mask = ColorMaskFX(ColorUtils.hexToRGB("B868A0"))
+        mask.amount = 0 
+        self:addFX(mask)
+        local snd = Assets.playSound("poison", 2)
+        local tween = snd:getDuration() / 2
+        Game.battle.timer:tween(tween, mask, {amount = 1}, "linear", function()
+        Game.battle.timer:tween(tween, mask, {amount = 0})
+        end)
+    end
 end 
 end 
 
