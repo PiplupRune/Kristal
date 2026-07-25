@@ -24,7 +24,7 @@ function SpamtogShopQuaintonRiverbed:init()
     -- Shown when you enter the talk menu.
     self.talk_text = "[emote:smug]WHA7 CAN I D0 YOU FOR, LI<< NERS?"
 
-    self.currency_text = "%d CHROME"
+    self.currency_text = "%d Chrome"
 
     self.sell_options_text = {}
     self.sell_options_text["items"]   = "[emote:idle]ITEMS FOR CHROME?"
@@ -41,8 +41,13 @@ function SpamtogShopQuaintonRiverbed:init()
 
     self:registerItem("darkburger")
     self:registerItem("oran_berry")
-    self:registerItem("darkburger")
-    self:registerItem("darkburger")
+    self:registerItem("pokepotion_normal")
+    self:registerItem("pokepotion_super")
+    self:registerItem("pokepotion_hyper")
+    self:registerItem("pokepotion_max")
+    self:registerItem("sitrus_berry")
+    self:registerItem("pecha_berry")
+    self:registerItem("cheri_berry")
 
     self:registerTalk("You look familiar...")
     self:registerTalk("Got any deals?")
@@ -92,10 +97,10 @@ function SpamtogShopQuaintonRiverbed:startTalk(talk)
             self:setFlag("talk_3_1", true)
         end)
     elseif talk == "Other browsers?" then
-        self:startDialogue({"[emote:annoyed]* DON'þ YOU [voice:none][sound:voice/spamtog/no][no!!][voice:spamtog] [voice:none][sound:voice/spamtog/chrome][font:qooqle][Qooqle Chrome™][font:main][voice:spamtog] IS THE BEST [text \"STOP\" to [voice:none][sound:voice/spamtog/tooptout][style:GONER]427837[style:dark][voice:spamtog] to opt out]ION THERE IS!";
-        "[emote:left]* [voice:none][sound:voice/spamtog/internetconquistador][Internet Conquistador™][voice:spamtog] HASN'T BEEN UPD@TED IN YEARS!";
-        "[emote:smug]* [voice:none][sound:voice/spamtog/opera][Operahus EX™][voice:spamtog] IS A [color:#5C3EAC]RAM[color:white] HOG!";
-        "[emote:left]* [voice:none][sound:voice/spamtog/vulcanvulpes][Modzilla VulcanVulpes™][voice:spamtog] IS...";
+        self:startDialogue({"[emote:annoyed]* DON'þ YOU [voice:none][sound:voice/spamtog/no][no!!][voice:spamtog] [voice:none][sound:voice/spamtog/chrome][[font:qooqle]Qooqle Chrome™ [font:main]][voice:spamtog] IS THE BEST [text \"STOP\" to [voice:none][sound:voice/spamtog/tooptout][style:GONER]427837[style:dark][voice:spamtog] to opt out]ION THERE IS!";
+        "[emote:left]* [voice:none][sound:voice/spamtog/internetconquistador][[font:macrosoftheavy]MacrOoft Internet Conquistador™ [font:main]][voice:spamtog] HASN'T BEEN UPD@TED IN YEARS!";
+        "[emote:smug]* [voice:none][sound:voice/spamtog/opera][[font:operahouse]OPERETTA ex™ [font:main]][voice:spamtog] IS A [color:#5C3EAC]RAM[color:white] HOG!";
+        "[emote:left]* [voice:none][sound:voice/spamtog/vulcanvulpes][[font:phoenix, 2]Modzilla VulcanVulpes™[font:main]][voice:spamtog] IS...";
         "[emote:idle]* WELL ACTUALLY I DON'T [voice:none][sound:voice/spamtog/cook][[--se we have to c--]][voice:spamtog] ANYTHING AGAINST IT,[wait:5] I JUST DON'T LIKE CHANGE.";
         "[emote:smug]* I'LL [voice:none][sound:voice/spamtog/except][except][voice:spamtog] YOvR PO CK[wait:2]E T CHAN[wait:3]GE,[wait:5] THOUGH!"}, function ()
             self.shopkeeper:setSprite("talk")

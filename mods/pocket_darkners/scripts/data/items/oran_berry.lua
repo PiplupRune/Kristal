@@ -34,7 +34,7 @@ function item:init()
     }
 
     -- Default shop price (sell price is halved)
-    self.price = 10
+    self.price = 2
     -- Whether the item can be sold
     self.can_sell = true
 
@@ -58,7 +58,7 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        kris = "Weirdly smooth?",
+        kris = "Weirdly smooth?", 
         susie = "Woah, juicy!",
         quartz = "Could be sweeter...",
     }

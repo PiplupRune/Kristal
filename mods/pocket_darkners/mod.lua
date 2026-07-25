@@ -8,7 +8,7 @@ function Mod:onTextSound(sound, node)
     if sound == "type" then
         -- play sound at random pitch
         local snd = Assets.stopAndPlaySound("voice/type")
-        snd:setPitch(0.9 + MathUtils.random(0.15))
+        snd:setPitch(0.7 + MathUtils.random(0.45))
         return true -- true to indicate we handled it this is my short test to se if it worked
     end
 end
