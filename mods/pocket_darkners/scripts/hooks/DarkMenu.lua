@@ -7,7 +7,7 @@ function DarkMenu:init()
         ["state"]          = "BERRYMENU", 
         ["sprite"]         = Assets.getTexture("ui/menu/btn/berry"),       
         ["hovered_sprite"] = Assets.getTexture("ui/menu/btn/berry_h"),     
-        ["desc_sprite"]    = Assets.getTexture("ui/menu/desc/berry"),      
+        ["desc_sprite"]    = Assets.getTexture("ui/menu/desc/pack"),      
         ["callback"]       = function()
             self.box = BackPack()
             self.box.layer = 1

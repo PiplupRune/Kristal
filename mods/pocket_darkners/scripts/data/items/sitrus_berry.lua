@@ -8,8 +8,7 @@ function item:init()
     -- Name displayed when used in battle (optional)
     self.use_name = nil
     -- Makes it so that it is a berry.
-    self.berry = true  
-
+    self.backpack_type = "berries"
     -- Item type (item, key, weapon, armor)
     self.type = "item"
     -- Item icon (for equipment)

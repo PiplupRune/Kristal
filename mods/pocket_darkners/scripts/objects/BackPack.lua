@@ -17,20 +17,20 @@ function BackPack:init()
     self.held_timer = 0
     self.pockets = {
         { id = "MEDICINE",  name = "Medicine" },
-        { id = "ITEMS",     name = "Items" },
         { id = "TMS",       name = "TMs" },
         { id = "BERRIES",   name = "Berries" },
         { id = "SEEDS",     name = "Seeds" },
-        { id = "KEY_ITEMS", name = "Key Items" }
+        { id = "POTION",    name = "Potions"}
     }
 
     table.sort(self.pockets, function(a, b)
         return string.lower(a.name) < string.lower(b.name)
     end)
 end
--- UNIVERSAL HARVESTER: Sweeps all storage pools and processes multi-type elements
+
 function BackPack:getItemsInPocket(pocket_id)
     local filtered_items = {}
+    local item_counts = {} 
     local storage_pools = {"items", "key", "light"}
     
     for _, pool in ipairs(storage_pools) do
@@ -49,18 +49,28 @@ function BackPack:getItemsInPocket(pocket_id)
                 end
                 
                 if match then
-                    table.insert(filtered_items, item)
+                    if item_counts[item.id] then
+                        item_counts[item.id].count = item_counts[item.id].count + 1
+                    else
+                        local entry = {
+                            object = item,
+                            count = 1
+                        }
+                        item_counts[item.id] = entry
+                        table.insert(filtered_items, entry)
+                    end
                 end
             end
         end
     end
     
     table.sort(filtered_items, function(a, b)
-        return string.lower(a:getName()) < string.lower(b:getName())
+        return string.lower(a.object:getName()) < string.lower(b.object:getName())
     end)
     
     return filtered_items
 end
+
 
 function BackPack:getCurrentDisplayList()
     local active_pocket = self.pockets[self.current_pocket_index]
@@ -69,15 +79,14 @@ function BackPack:getCurrentDisplayList()
 end
 
 function BackPack:getSelectedItem()
-    return self:getCurrentDisplayList()[self.selected_option]
+    local item_data = self:getCurrentDisplayList()[self.selected_option]
+    return item_data and item_data.object or nil
 end
 
 function BackPack:updateSelectedItem()
     local item = self:getSelectedItem()
     if item and Game.world.menu then
         Game.world.menu:setDescription(item:getDescription(), true)
-    -- else
-    --     Game.world.menu:setDescription(self:getEmptyMessage(), true)
     end
 end
 
@@ -87,7 +96,6 @@ function BackPack:getEmptyMessage()
     return "No " .. (active_pocket and active_pocket.name or "Items") .. "!"
 end
 
--- CORE GAME MECHANIC: Using the item with healthbar status adjustments intact
 function BackPack:useItem(item, party)
     local result = item:onWorldUse(party)
     if isClass(party) then
@@ -111,6 +119,7 @@ function BackPack:useItem(item, party)
     end
     self:updateSelectedItem()
 end
+
 
 function BackPack:handleMenuScroll(total_items)
     local pressed_up = Input.pressed("up")
@@ -162,7 +171,9 @@ function BackPack:update()
             self.selected_option = 1
             self.list_offset = 0
             self:updateSelectedItem()
+            return
         end
+
         if Input.pressed("cancel") then
             Assets.stopAndPlaySound("ui_cancel_small")   
             if self.parent and self.parent.state == "BERRYMENU" then
@@ -182,15 +193,6 @@ function BackPack:update()
             Assets.stopAndPlaySound("ui_move")
             self.selected_option = (self.selected_option == total_pockets) and 1 or self.selected_option + 1
         end
-        
-        if Input.pressed("confirm") then
-            Assets.stopAndPlaySound("ui_select")
-            self.current_pocket_index = self.selected_option
-            self.state = "ITEM_SELECT" 
-            self.selected_option = 1
-            self.list_offset = 0
-            self:updateSelectedItem()
-        end
 
     elseif self.state == "ITEM_SELECT" then
         if Input.pressed("cancel") then
@@ -205,20 +207,24 @@ function BackPack:update()
             if Input.pressed("confirm") then
                 local selected_item = self:getSelectedItem()
                 if selected_item then
-                    local is_usable = selected_item.usable_in == "world" or selected_item.usable_in == "all"
-                    local has_effect = selected_item.onWorldUse ~= nil
-                    
-                    if is_usable and has_effect then
-                        Assets.stopAndPlaySound("ui_select")
-                        self.state = "PARTY_SELECT" 
-                        Game.world.menu:partySelect("SINGLE", function(success, party)
-                            self.state = "ITEM_SELECT"
-                            if success and party then
-                                self:useItem(selected_item, party)
-                            end
-                        end)
+                    if selected_item.onWorldMenuSelect then
+                        selected_item:onWorldMenuSelect(self)
                     else
-                        Assets.stopAndPlaySound("ui_cant_select")
+                        local is_usable = selected_item.usable_in == "world" or selected_item.usable_in == "all"
+                        local is_heal_item = selected_item:includes(HealItem)
+                        
+                        if is_usable and is_heal_item then
+                            Assets.stopAndPlaySound("ui_select")
+                            self.state = "PARTY_SELECT" 
+                            Game.world.menu:partySelect("SINGLE", function(success, party)
+                                self.state = "ITEM_SELECT"
+                                if success and party then
+                                    self:useItem(selected_item, party)
+                                end
+                            end)
+                        else
+                            Assets.stopAndPlaySound("ui_cant_select")
+                        end
                     end
                 end
             end
@@ -282,17 +288,32 @@ function BackPack:draw()
     
     local item_y = 0
     for i = self.list_offset + 1, self.list_offset + 9 do
-        local item = current_items[i]
-        if item then
-            Draw.setColor(PALETTE["world_text_shadow"])
-            local name = item:getName()
-            love.graphics.print(name, 180 + 54 + 2 - 8, 6 + (item_y * 30) + 2)
-            Draw.setColor(1, 1, 1, 1)
+        local item_data = current_items[i]
+        if item_data then
+            local item = item_data.object
+            local count = item_data.count
             
+            local name = item:getName()
+            local count_str = (count > 1) and ("x" .. tostring(count)) or ""
+            Draw.setColor(PALETTE["world_text_shadow"])
+            love.graphics.print(name, 180 + 54 + 2 - 8, 6 + (item_y * 30) + 2)
+            if count_str ~= "" then
+                love.graphics.print(count_str, 180 + 54 + 2 - 8 + 220, 6 + (item_y * 30) + 2)
+            end
+            Draw.setColor(1, 1, 1, 1)
             if i == self.selected_option and self.state == "ITEM_SELECT" then 
                 Draw.setColor(PALETTE["world_header_selected"]) 
             end
             love.graphics.print(name, 180 + 54 - 8, 6 + (item_y * 30))
+            if count_str ~= "" then
+                if i == self.selected_option and self.state == "ITEM_SELECT" then
+                    Draw.setColor(PALETTE["world_text_shadow"])
+                else
+                    Draw.setColor(1, 1, 1, 1)
+                end
+                love.graphics.print(count_str, 180 + 54 - 8 + 220, 6 + (item_y * 30))
+            end
+            
             item_y = item_y + 1
         end
     end
@@ -308,5 +329,6 @@ function BackPack:draw()
 
     super.draw(self)
 end
+
 
 return BackPack

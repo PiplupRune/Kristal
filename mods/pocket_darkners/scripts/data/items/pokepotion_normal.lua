@@ -4,12 +4,14 @@ function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Potion"
+    self.name = "BasicPotion"
     -- Name displayed when used in battle (optional)
     self.use_name = nil
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
+    -- Makes this a potion 
+    self.backpack_type = "potion"
     -- Item icon (for equipment)
     self.icon = nil
 
