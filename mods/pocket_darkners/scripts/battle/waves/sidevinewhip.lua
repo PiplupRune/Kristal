@@ -12,19 +12,18 @@ function SideVineWhip:onStart()
 
     -- create a bullet in the center of the screen
     local x, y = Game.battle.arena:getCenter()
-    self.timer:every(1, function()
+    self.timer:every(1.5, function()
         local x = self:getSideX()
         local bullet = self:spawnBullet("vinewhipbullet", x, (y + love.math.random(-60,60)))  -- sets the y to pretty much anywhere within the battle box bounds
-        bullet:setParent(Game.battle.arena.mask)
-        local x, y = Game.battle.arena:getCenter()
-        local x = self:getSideX()
         bullet:setScreenPos(x, (y + love.math.random(-60,60)))  -- sets the y to pretty much anywhere within the battle box bounds
-        bullet.visible = false
+        bullet.visible = true
         bullet:drawTelegraph(bullet.y, Game.battle.arena.width)
         bullet.rotation = self:getRotation(x)  -- gets rotation based on position
         bullet.physics.direction = self:getDirection(x)  -- gets direction based on position
-        bullet:slideTo(bullet.x + self:getEdgePos(x), bullet.y, 0.5)
         self.timer:after(0.5, function()
+            bullet:slideTo(bullet.x + self:getEdgePos(x), bullet.y, 0.5)
+        end)
+        self.timer:after(1, function()
             Assets.playSound("grab")
         end)
         self.timer:after(2, function()
