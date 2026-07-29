@@ -8,7 +8,7 @@ return {
             if MathUtils.randomInt(0, 2) == 1 then -- 50% chance for special dialogue
                 cutscene:text("* Damn,[wait:5] I can see why Kris's apple shampoo got you so excited.", "annoyed_down", "susie")
                 cutscene:text("* What's an apple?", "confused", "quartz")
-                    if MathUtils.randomInt(0, 5) == 4 then -- additional 20% chance for secondary special dialogue
+                    if MathUtils.randomInt(0, 2) == 1 then -- additional 50% chance for secondary special dialogue
                         cutscene:text("* They don't even have APPLES!", "confused", "kris")
                         cutscene:text("* Arright,[wait:5] you gotta stop memeing under your breath.", "neutral", "susie")
                     end
