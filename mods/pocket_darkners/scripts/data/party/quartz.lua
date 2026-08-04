@@ -80,7 +80,7 @@ function character:init()
     -- Effect shown above enemy after attacking it
     self.attack_sprite = "effects/attack/shot"
     -- Sound played when this character attacks
-    self.attack_sound = "heartshot_dr_b"
+    ---self.attack_sound = "heartshot_dr_b"
     -- Pitch of the attack sound
     self.attack_pitch = 1
 
@@ -94,5 +94,10 @@ function character:init()
     -- Message shown on gameover (optional)
     self.gameover_message = nil
 end
-
+function character:onLevelUp(level)
+    if self.level == 5 then
+    Game.world:startCutscene("spell")
+    self:addSpell("heal_prayer")
+    end
+end 
 return character
