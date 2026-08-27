@@ -33,6 +33,7 @@ function Dummy:init()
     -- Dialogue randomly displayed in the enemy's speech bubble
     self.dialogue = {
         "Currently testing:\nVine Whip from the sides"
+        "Someday this wave\nwill be functional\nand there will be much\nrejoicing."
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
