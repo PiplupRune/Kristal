@@ -4,7 +4,7 @@ function SideVineWhip:init()
     super.init(self)
 
     -- The duration of our wave, in seconds. (Defaults to `5`)
-    self.time = 8.5
+    self.time = 10
 end
 
 function SideVineWhip:onStart()
