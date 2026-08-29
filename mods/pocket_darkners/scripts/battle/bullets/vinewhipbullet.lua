@@ -2,26 +2,26 @@ local VineWhipBullet, super = Class(Bullet)
 
 function VineWhipBullet:init(x, y)
     super.init(self, x, y, "bullets/vinewhip")
-    
-    
+
+    self:setOrigin(0, 0.5)
+    self:setHitbox(0, 2, 100, 4)
+
+    self.destroy_on_hit = false
+
+    self.telegraph = true
 end
 
-function VineWhipBullet:drawTelegraph(start_y, length) 
-    local rect = Rectangle(Game.battle.arena:getLeft(), start_y, 1, length)  
-    rect:setLayer(BATTLE_LAYERS["below_bullets"])
-    rect.rotation = math.rad(270)
-    Assets.playSound("alert") 
-    self.wave:spawnObject(rect) 
-    rect:setColor(COLORS.red)
-    rect.alpha = 0.7 
-    self.wave.timer:after(0.5, function() 
-    self.visible = true -- resets it to make it visible
-        rect:remove() 
-    end) 
-end
+function VineWhipBullet:draw()
+    if self.telegraph then
+        love.graphics.setLineWidth(1)
+        Draw.setColor(COLORS.red)
 
-function VineWhipBullet:update()
-    super.update(self)
+        love.graphics.line(-400, self.height / 2, 400, self.height / 2)
+    end
+
+    Draw.setColor(1, 1, 1, 1)
+
+    super.draw(self)
 end
 
 return VineWhipBullet
