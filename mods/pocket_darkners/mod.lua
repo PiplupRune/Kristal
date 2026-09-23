@@ -5,7 +5,7 @@ function Mod:init()
     print("Loaded " .. self.info.name .. "!")
 end
 function Mod:onTextSound(sound, node)
-    if sound == "type" then
+    if sound == "typenew" then
         -- play sound at random pitch
         local snd = Assets.stopAndPlaySound("voice/type")
         snd:setPitch(0.7 + MathUtils.random(0.45))
