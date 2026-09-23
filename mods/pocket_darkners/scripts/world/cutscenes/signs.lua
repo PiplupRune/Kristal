@@ -1,25 +1,25 @@
 return {
     starting_room = function(cutscene, event)
         cutscene:text("* The sign's text is faded.\n* All you can make out is...")
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* \"puzzles\"")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* \"puzzles\"")
         cutscene:text("* (You think about how Rouxls would probably love this place,", "skeptical_eyes", "kris")
         cutscene:text("* based entirely off of this sign alone.)", "skeptical_eyes", "kris")
     end,
 
     entrance_chamber_1_1 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* Our ancestors were brilliant at finding their[sound:beep][wait:5] way.[wait:5] They could solve any puzzle-[sound:beep][wait:5] \nthey could best any obstacle.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* Our ancestors were brilliant at finding their[sound:beep][wait:5] way.[wait:5] They could solve any puzzle-[sound:beep][wait:5] \nthey could best any obstacle.")
         cutscene:text("* Heh,[wait:5] sounds like you...", "smirk", "susie")
         cutscene:text("* Nerd!", "smile", "susie")
     end,
 
     entrance_chamber_1_2 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* However, as time went on, they began to grow[sound:beep][wait:5] concerned.[wait:5] Concerned that their progeny would[sound:beep][wait:5] not have the neccessary experience-[wait:5]\nThat they would not be masters of wayfinding[sound:beep][wait:5] like those which came before.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* However, as time went on, they began to grow[sound:beep][wait:5] concerned.[wait:5] Concerned that their progeny would[sound:beep][wait:5] not have the neccessary experience-[wait:5]\nThat they would not be masters of wayfinding[sound:beep][wait:5] like those which came before.")
             
     end,
 
     entrance_chamber_1_3 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* To ensure that their descendents would[sound:beep][wait:5]\ninherit their navigatory skill,[wait:5] the elders[sound:beep][wait:5] converted their roads into challenges and[sound:beep][wait:5] puzzles,[wait:5] designed to keep sharp the minds of[sound:beep][wait:5] the youth.")
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* At least,[wait:5] that is the story which has been[sound:beep][wait:5] passed down,[wait:5] to us from our ancestors,[wait:5] to them[sound:beep][wait:5] from theirs,[wait:5] as far back as records go.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* To ensure that their descendents would[sound:beep][wait:5]\ninherit their navigatory skill,[wait:5] the elders[sound:beep][wait:5] converted their roads into challenges and[sound:beep][wait:5] puzzles,[wait:5] designed to keep sharp the minds of[sound:beep][wait:5] the youth.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* At least,[wait:5] that is the story which has been[sound:beep][wait:5] passed down,[wait:5] to us from our ancestors,[wait:5] to them[sound:beep][wait:5] from theirs,[wait:5] as far back as records go.")
         cutscene:text("* Arright,[wait:5] hold up.", "neutral", "susie")
         cutscene:text("* Why are all of these signs so close to the damn ground???", "teeth_b", "susie")
         cutscene:text("* Whoever built this place must've been,[wait:5] like,", "suspicious", "susie")
@@ -27,33 +27,33 @@ return {
     end,
 
     entrance_chamber_2_1 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* Our ancestors had no issues navigating the[sound:beep][wait:5] new,[wait:5] purpose-built obstacles.[wait:5] Their children[sound:beep][wait:5] soon learnt what they needed.[wait:5] Eventually,[sound:beep][wait:5] negotiating puzzles in order to travel became[sound:beep][wait:5] the norm.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* Our ancestors had no issues navigating the[sound:beep][wait:5] new,[wait:5] purpose-built obstacles.[wait:5] Their children[sound:beep][wait:5] soon learnt what they needed.[wait:5] Eventually,[sound:beep][wait:5] negotiating puzzles in order to travel became[sound:beep][wait:5] the norm.")
     end,
 
     entrance_chamber_2_2 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* Until one day...[wait:5]")
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* ...[wait:5]")
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* The brilliant light that once filled our sky...[sound:beep][wait:5]\nIt vanished.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* Until one day...[wait:5]")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* ...[wait:5]")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* The brilliant light that once filled our sky...[sound:beep][wait:5]\nIt vanished.")
         end,
 
     entrance_chamber_3_1 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* Our world soon plunged into eternal night.[sound:beep][wait:5] \nA night so bleak and unwavering,[wait:5] not even the [sound:beep][wait:5]nocturnal of us could cope.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* Our world soon plunged into eternal night.[sound:beep][wait:5] \nA night so bleak and unwavering,[wait:5] not even the [sound:beep][wait:5]nocturnal of us could cope.")
     end,
 
     entrance_chamber_3_2 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* An oracle muttered something about[sound:beep][wait:5] abandonment from a supposed \"[speed:0.25][color:#00FFFF]creator[color:reset][speed:0.5]\"...[wait:10]Not[sound:beep][wait:5] even the oracle understood,[wait:5] but the people grew [sound:beep][wait:5]bitter nevertheless.")
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* Our world...[wait:5] began to decay.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* An oracle muttered something about[sound:beep][wait:5] abandonment from a supposed \"[speed:0.25][color:#00FFFF]creator[color:reset][speed:0.5]\"...[wait:10]Not[sound:beep][wait:5] even the oracle understood,[wait:5] but the people grew [sound:beep][wait:5]bitter nevertheless.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* Our world...[wait:5] began to decay.")
         
     end,
 
     entrance_chamber_3_3 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* Desperate for a sign from a \"[speed:0.25][color:#00FFFF]creator[color:reset][speed:0.5]\" nobody[sound:beep][wait:5] knew, let alone even heard of before then,[sound:beep][wait:5][wait:5] many of our people isolated themselves.")
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* The puzzles that once served as teaching tools[sound:beep][wait:5] and mental stimulation,[wait:5] would now be used to[sound:beep][wait:5] keep anybody and everybody away.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* Desperate for a sign from a \"[speed:0.25][color:#00FFFF]creator[color:reset][speed:0.5]\" nobody[sound:beep][wait:5] knew, let alone even heard of before then,[sound:beep][wait:5][wait:5] many of our people isolated themselves.")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* The puzzles that once served as teaching tools[sound:beep][wait:5] and mental stimulation,[wait:5] would now be used to[sound:beep][wait:5] keep anybody and everybody away.")
     end,
 
     entrance_chamber_3_4 = function(cutscene, event)
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* The so-called oracle's final words were:")
-        cutscene:text("[font:timesnewroman, 1][voice:type][speed:0.5]* \"Someday,[wait:5] two [color:yellow]HEROES[color:reset] will arrive.[wait:5] They will[sound:beep][wait:5] return the light to our darkened world.[wait:5] Until[sound:beep][wait:5] then,[wait:5] all we can do is wait.[wait:5].[wait:5].[wait:10] and hope.\"")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* The so-called oracle's final words were:")
+        cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* \"Someday,[wait:5] two [color:yellow]HEROES[color:reset] will arrive.[wait:5] They will[sound:beep][wait:5] return the light to our darkened world.[wait:5] Until[sound:beep][wait:5] then,[wait:5] all we can do is wait.[wait:5].[wait:5].[wait:10] and hope.\"")
        cutscene:text("* Man,[wait:5] this got depressing fast...", "sad", "susie")
         cutscene:text("* (You silently nod in agreement.)", "unnerved", "kris")
     end,
