@@ -6,4 +6,8 @@ function bullet:init(x, y)
     self.collider = CircleCollider(self, self.width / 2, self.height / 2, 6)
 end
 
+function bullet:getTarget()
+    return "ALL"
+end
+
 return bullet
