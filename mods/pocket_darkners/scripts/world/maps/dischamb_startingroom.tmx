@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="13">
+<map version="1.11" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="21" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="15">
  <editorsettings>
   <export target="dischamb_startingroom.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="music" value="pokedaa_world_starting_chambers"/>
+  <property name="music" value="zzz/pokedaa_mus_ruins_test"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/dismal_chambers.tsx"/>
  <layer id="1" name="tiles main" width="21" height="12">
@@ -66,9 +66,19 @@
     <property name="once" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="13" name="transition" x="840" y="280" width="40" height="80">
+   <properties>
+    <property name="facing" value="right"/>
+    <property name="map" value="dischamb_chamber1"/>
+    <property name="marker" value="entrance"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup color="#00007f" id="5" name="markers">
   <object id="10" name="spawn" x="200" y="320">
+   <point/>
+  </object>
+  <object id="14" name="exit" x="800" y="320">
    <point/>
   </object>
  </objectgroup>

@@ -4,7 +4,7 @@
   <export target="starting_room.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="music" value="pokedaa_world_starting_chambers"/>
+  <property name="music" value="pokedaa_mus_world_starting_chambers"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/bluish_cave.tsx"/>
  <layer id="1" name="main tiles" width="16" height="14">

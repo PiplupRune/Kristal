@@ -10,9 +10,9 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 13,
+  nextobjectid = 15,
   properties = {
-    ["music"] = "pokedaa_world_starting_chambers"
+    ["music"] = "zzz/pokedaa_mus_ruins_test"
   },
   tilesets = {
     {
@@ -264,6 +264,24 @@ return {
             ["cutscene"] = "dialogues.starting_room_susie_1",
             ["once"] = true
           }
+        },
+        {
+          id = 13,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 840,
+          y = 280,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          opacity = 1,
+          visible = true,
+          properties = {
+            ["facing"] = "right",
+            ["map"] = "dischamb_chamber1",
+            ["marker"] = "entrance"
+          }
         }
       }
     },
@@ -287,6 +305,20 @@ return {
           type = "",
           shape = "point",
           x = 200,
+          y = 320,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          opacity = 1,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "exit",
+          type = "",
+          shape = "point",
+          x = 800,
           y = 320,
           width = 0,
           height = 0,

@@ -4,7 +4,7 @@
   <export target="entrance_chamber_2.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="music" value="pokedaa_world_starting_chambers"/>
+  <property name="music" value="pokedaa_mus_world_starting_chambers"/>
   <property name="name" value="Dismal Chambers"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/bluish_cave.tsx"/>
