@@ -4,7 +4,7 @@
   <export target="quainton_ruins.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="music" value="pokedaa_mus_quainton_demo_loops"/>
+  <property name="music" value="pokedaa_mus_world_quainton_demo_loops"/>
   <property name="name" value="Quainton Ruins"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/quainton_ruins_and_river.tsx"/>

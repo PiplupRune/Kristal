@@ -12,7 +12,7 @@ return {
   nextlayerid = 6,
   nextobjectid = 13,
   properties = {
-    ["music"] = "pokedaa_starting_chambers"
+    ["music"] = "pokedaa_world_starting_chambers"
   },
   tilesets = {
     {

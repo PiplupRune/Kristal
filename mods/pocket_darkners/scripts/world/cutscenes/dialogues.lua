@@ -1,6 +1,6 @@
 return {
     starting_room_susie_1 = function(cutscene, event)
-        Game.world.music:pause("pokedaa_starting_chambers")
+        Game.world.music:pause("pokedaa_world_starting_chambers")
         local susie = cutscene:getCharacter("susie")
         local kris = cutscene:getCharacter("kris")
         cutscene:setSpeaker(susie)
@@ -17,7 +17,7 @@ return {
         cutscene:text("* I can hear you laughing under your breath!", "teeth")
         cutscene:text("* What else was I supposed to say?", "teeth")
         susie:resetSprite()
-        Game.world.music:resume("pokedaa_starting_chambers")
+        Game.world.music:resume("pokedaa_world_starting_chambers")
         
         
     end,

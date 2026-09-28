@@ -13,7 +13,7 @@ return {
   nextobjectid = 25,
   backgroundcolor = { 0, 0, 0 },
   properties = {
-    ["music"] = "pokedaa_starting_chambers"
+    ["music"] = "pokedaa_world_starting_chambers"
   },
   tilesets = {
     {

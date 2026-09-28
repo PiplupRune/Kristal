@@ -13,7 +13,7 @@ return {
   nextobjectid = 41,
   backgroundcolor = { 0, 0, 0 },
   properties = {
-    ["music"] = "pokedaa_mus_quainton_demo_loops",
+    ["music"] = "pokedaa_mus_world_quainton_demo_loops",
     ["name"] = "Quainton Ruins"
   },
   tilesets = {

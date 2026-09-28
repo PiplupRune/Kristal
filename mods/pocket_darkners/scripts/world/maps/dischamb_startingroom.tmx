@@ -4,7 +4,7 @@
   <export target="dischamb_startingroom.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="music" value="pokedaa_starting_chambers"/>
+  <property name="music" value="pokedaa_world_starting_chambers"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/dismal_chambers.tsx"/>
  <layer id="1" name="tiles main" width="21" height="12">
