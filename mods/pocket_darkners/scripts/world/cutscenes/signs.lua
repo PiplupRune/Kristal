@@ -20,10 +20,14 @@ return {
     entrance_chamber_1_3 = function(cutscene, event)
         cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* To ensure that their descendents would[sound:beep][wait:5]\ninherit their navigatory skill,[wait:5] the elders[sound:beep][wait:5] converted their roads into challenges and[sound:beep][wait:5] puzzles,[wait:5] designed to keep sharp the minds of[sound:beep][wait:5] the youth.")
         cutscene:text("[font:timesnewroman, 1][voice:typenew][speed:0.5]* At least,[wait:5] that is the story which has been[sound:beep][wait:5] passed down,[wait:5] to us from our ancestors,[wait:5] to them[sound:beep][wait:5] from theirs,[wait:5] as far back as records go.")
+        --cutscene:text("* Arright,[wait:5] hold up.", "neutral", "susie")
+        --cutscene:text("* Why are all of these signs so close to the damn ground???", "teeth_b", "susie")
+        --cutscene:text("* Whoever built this place must've been,[wait:5] like,", "suspicious", "susie")
+        --cutscene:text("* Really short or something.", "smile", "susie")
         cutscene:text("* Arright,[wait:5] hold up.", "neutral", "susie")
-        cutscene:text("* Why are all of these signs so close to the damn ground???", "teeth_b", "susie")
-        cutscene:text("* Whoever built this place must've been,[wait:5] like,", "suspicious", "susie")
-        cutscene:text("* Really short or something.", "smile", "susie")
+        cutscene:text("* DIALOGUE IN NEED OF REWORK", "teeth_b", "susie")
+        cutscene:text("* THIS IS TEMPORARY DIALOGUE REPLACE IT WITH SOMETHING MORE FITTING", "suspicious", "susie")
+        cutscene:text("* OF THE REWORKED DISMAL CHAMBERS MAPS PLEASE AND THANKS", "smile", "susie")
     end,
 
     entrance_chamber_2_1 = function(cutscene, event)

@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 19,
+  nextobjectid = 21,
   properties = {
     ["music"] = "zzz/pokedaa_mus_ruins_test"
   },
@@ -334,6 +334,24 @@ return {
             ["map"] = "dischamb_chamber1",
             ["marker"] = "exit"
           }
+        },
+        {
+          id = 19,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 200,
+          y = 800,
+          width = 80,
+          height = 40,
+          rotation = 0,
+          opacity = 1,
+          visible = true,
+          properties = {
+            ["facing"] = "right",
+            ["map"] = "dischamb_chamber3",
+            ["marker"] = "entrance"
+          }
         }
       }
     },
@@ -358,6 +376,20 @@ return {
           shape = "point",
           x = 960,
           y = 40,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          opacity = 1,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 20,
+          name = "exit",
+          type = "",
+          shape = "point",
+          x = 240,
+          y = 760,
           width = 0,
           height = 0,
           rotation = 0,
