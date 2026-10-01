@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="25">
+<map version="1.11" tiledversion="1.12.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="27">
  <editorsettings>
   <export target="dischamb_chamber3.lua" format="lua"/>
  </editorsettings>
@@ -86,8 +86,12 @@
     <property name="marker" value="exit"/>
    </properties>
   </object>
-  <object id="24" name="spawn" x="1040" y="440">
-   <point/>
+  <object id="25" name="transition" x="1600" y="400" width="40" height="80">
+   <properties>
+    <property name="facing" value="right"/>
+    <property name="map" value="dischamb_chamber4"/>
+    <property name="marker" value="entrance"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup color="#00007f" id="5" name="markers">
@@ -95,6 +99,9 @@
    <point/>
   </object>
   <object id="22" name="exit" x="1560" y="440">
+   <point/>
+  </object>
+  <object id="26" name="spawn" x="1040" y="440">
    <point/>
   </object>
  </objectgroup>

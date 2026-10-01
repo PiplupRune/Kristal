@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 25,
+  nextobjectid = 27,
   properties = {
     ["music"] = "zzz/pokedaa_mus_ruins_test"
   },
@@ -392,18 +392,22 @@ return {
           }
         },
         {
-          id = 24,
-          name = "spawn",
+          id = 25,
+          name = "transition",
           type = "",
-          shape = "point",
-          x = 1040,
-          y = 440,
-          width = 0,
-          height = 0,
+          shape = "rectangle",
+          x = 1600,
+          y = 400,
+          width = 40,
+          height = 80,
           rotation = 0,
           opacity = 1,
           visible = true,
-          properties = {}
+          properties = {
+            ["facing"] = "right",
+            ["map"] = "dischamb_chamber4",
+            ["marker"] = "entrance"
+          }
         }
       }
     },
@@ -441,6 +445,20 @@ return {
           type = "",
           shape = "point",
           x = 1560,
+          y = 440,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          opacity = 1,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 1040,
           y = 440,
           width = 0,
           height = 0,
