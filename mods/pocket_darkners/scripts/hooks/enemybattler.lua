@@ -19,10 +19,10 @@ function EnemyBattler:getNextWaves()
         return {"hidden"}
         
     elseif self.paralyzed then 
-        if love.math.random(1, 4) == 1 then 
-            return {"paralysis"}
-        else
-            return super.getNextWaves(self)
+    if love.math.random(1, 4) == 1 then 
+        return {"paralysis"}
+    else
+        return super.getNextWaves(self)
         end 
     else 
         return super.getNextWaves(self)
