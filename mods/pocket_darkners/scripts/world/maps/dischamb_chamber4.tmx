@@ -109,7 +109,7 @@
   <object id="24" name="transition" x="1200" y="800" width="40" height="80">
    <properties>
     <property name="facing" value="right"/>
-    <property name="map" value="entrance_chamber_3"/>
+    <property name="map" value="dischamb_chamber5"/>
     <property name="marker" value="entrance"/>
    </properties>
   </object>

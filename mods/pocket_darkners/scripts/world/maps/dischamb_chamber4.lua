@@ -420,7 +420,7 @@ return {
           visible = true,
           properties = {
             ["facing"] = "right",
-            ["map"] = "entrance_chamber_3",
+            ["map"] = "dischamb_chamber5",
             ["marker"] = "entrance"
           }
         }
