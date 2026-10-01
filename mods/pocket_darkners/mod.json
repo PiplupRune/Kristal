@@ -18,7 +18,7 @@
     "chapter": 4,
 
     // The map that you start in when first starting the project.
-    "map": "starting_room",
+    "map": "dischamb_starting_room",
 
     // The party. The first character is the player.
     //"party": ["kris", "susie", "ralsei"],

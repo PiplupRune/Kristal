@@ -330,7 +330,7 @@ return {
           opacity = 1,
           visible = true,
           properties = {
-            ["facing"] = "left",
+            ["facing"] = "up",
             ["map"] = "dischamb_chamber1",
             ["marker"] = "exit"
           }
@@ -348,7 +348,7 @@ return {
           opacity = 1,
           visible = true,
           properties = {
-            ["facing"] = "right",
+            ["facing"] = "down",
             ["map"] = "dischamb_chamber3",
             ["marker"] = "entrance"
           }

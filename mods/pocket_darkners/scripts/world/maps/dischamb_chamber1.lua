@@ -348,7 +348,7 @@ return {
           opacity = 1,
           visible = true,
           properties = {
-            ["facing"] = "right",
+            ["facing"] = "down",
             ["map"] = "dischamb_chamber2",
             ["marker"] = "entrance"
           }

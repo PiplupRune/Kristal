@@ -386,7 +386,7 @@ return {
           opacity = 1,
           visible = true,
           properties = {
-            ["facing"] = "left",
+            ["facing"] = "up",
             ["map"] = "dischamb_chamber2",
             ["marker"] = "exit"
           }

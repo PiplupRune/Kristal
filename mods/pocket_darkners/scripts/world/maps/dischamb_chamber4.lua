@@ -10,7 +10,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 24,
+  nextobjectid = 25,
   properties = {
     ["music"] = "zzz/pokedaa_mus_ruins_test",
     ["name"] = "Dismal Chambers"
@@ -404,6 +404,24 @@ return {
             ["facing"] = "left",
             ["map"] = "dischamb_chamber3",
             ["marker"] = "exit"
+          }
+        },
+        {
+          id = 24,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 1200,
+          y = 800,
+          width = 40,
+          height = 80,
+          rotation = 0,
+          opacity = 1,
+          visible = true,
+          properties = {
+            ["facing"] = "right",
+            ["map"] = "entrance_chamber_3",
+            ["marker"] = "entrance"
           }
         }
       }

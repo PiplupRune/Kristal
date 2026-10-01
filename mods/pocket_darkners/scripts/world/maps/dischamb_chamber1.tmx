@@ -84,7 +84,7 @@
   </object>
   <object id="21" name="transition" x="920" y="800" width="80" height="40">
    <properties>
-    <property name="facing" value="right"/>
+    <property name="facing" value="down"/>
     <property name="map" value="dischamb_chamber2"/>
     <property name="marker" value="entrance"/>
    </properties>
