@@ -19,7 +19,7 @@ function item:init()
     -- Shop description
     self.shop = "Peculiar\nfruit\ncures POISON"
     -- Menu description
-    self.description = "A fruit that is quite sweet and very smooth.\nTastes vaguely like a peach. Cures POISON."
+    self.description = "A fruit that is quite sweet and very smooth.\nTastes vaguely like a peach. Cures [color:#702078]POISON[color:reset]."
 
     -- Amount healed (HealItem variable)
     --self.heal_amount = 30
