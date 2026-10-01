@@ -10,6 +10,8 @@ function item:init()
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
+    -- Makes this a potion 
+    self.backpack_type = "potion"
     -- Item icon (for equipment)
     self.icon = nil
 
@@ -18,7 +20,7 @@ function item:init()
     -- Shop description
     self.shop = "Sprayable\nmedicine\nheals MAX HP"
     -- Menu description
-    self.description = "Rather costly sprayable medicine in a blue bottle.\nHeals and sterilizes wounds fully. +MAX HP"
+    self.description = "Deluxe sprayable medicine in a blue bottle.\nHeals and sterilizes wounds fully. +MAX HP"
 
     -- Amount healed (HealItem variable)
     self.heal_amount = 1000
