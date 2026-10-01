@@ -34,6 +34,9 @@ function EnemyBattler:hasNonVolatileStatus()
     return self.poison or self.toxic or self.paralyzed
 end
 
+--- Attempts to apply a specific status condition to the enemy battler.
+---@param status string # The status ID to apply. Current options: `flinch`, `poison`, `paralysis` and `toxic`.
+---@param msg string? # Optional custom text message string to pass to the statusMessage method.
 function EnemyBattler:giveStatus(status, msg)
 
     if status == "flinch" then 
@@ -75,7 +78,7 @@ function EnemyBattler:giveStatus(status, msg)
     elseif status == "toxic" then 
         self:statusMessage("msg", msg or "poisonedbadly")
         self.toxic = true  
-        self.toxic_count = 1 -- Start the dynamic scaling counter
+        self.toxic_count = 1
         local mask = ColorMaskFX(ColorUtils.hexToRGB("B868A0"))
         mask.amount = 0 
         self:addFX(mask)
@@ -88,6 +91,8 @@ function EnemyBattler:giveStatus(status, msg)
     end 
 end
 
+--- Removes a status condition from the enemy battler.
+---@param status string # The ID of the status to cure (e.g., "poison").
 function EnemyBattler:cure(status) 
     self:statusMessage("msg", "cured")
     if status == "poison" then 
@@ -109,8 +114,14 @@ function EnemyBattler:cureAll()
     self.affect_waves = false 
 end
 
+--- A callback event caled whenever a status effect attempt is processed.
+---@param status string # The name ID of the status that was processed.
+---@param worked boolean # Whether the status was successfully applied to the enemy.
 function EnemyBattler:onStatused(status, worked) return end  
 
+---@param color table # The RGB table color for the rings (e.g. ColorUtils.hexToRGB("...") )
+---@param amount number # How many ripple rings should expand out
+---@param radius number|table # Max radius limit. Can be a flat number or a table mapping limits per ring index
 function EnemyBattler:expandRipple(color, amount, radius, speed)
     amount = amount or 1
     local center_x, center_y = self:getRelativePos(self.sprite.width / 2, self.sprite.height / 2, Game.battle)
@@ -124,6 +135,8 @@ function EnemyBattler:expandRipple(color, amount, radius, speed)
     end
 end
 
+--- A function that is called when the enemy should take their poison damage. 
+---@param toxic # Whether the damage should increase (bad poison), and will return the value, and the value for the next call. 
 function EnemyBattler:takePoisonDamage(toxic)
     local mask = ColorMaskFX(ColorUtils.hexToRGB("B868A0"))
     mask.amount = 0 
@@ -146,6 +159,9 @@ function EnemyBattler:takePoisonDamage(toxic)
     end 
 end
 
+--- Spawns a colored overlay and scrolling white lines. 
+---@param color table # The RGB table configuration defining the tint vector of the overlay shader lines.
+---@param full_intensity number? # The maximum opacity intensity target peak the shader should approach. Defaults to 0.7.
 function EnemyBattler:debuffEffect(color, full_intensity)
     local snd = Assets.playSound("stat_fell", 0.8)
     local my_fx = ShaderFX("debuff") 
