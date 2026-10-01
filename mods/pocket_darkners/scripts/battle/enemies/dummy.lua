@@ -74,8 +74,18 @@ function Dummy:onAct(battler, name)
             "* It seems the dummy just wanted\nto see you happy."
         }
     elseif name == "POISON" then 
-        self:giveStatus("poison")
-        return "* Oof"
+    Game.battle:startActCutscene(function(cutscene)
+        cutscene:text("* Which type of poision doth thou want?")
+        local c = cutscene:choicer({"Toxic!!", "Normal!!"})
+        local str
+        local _
+        if c == 1 then 
+            _, str = self:giveStatus("toxic")
+        elseif c == 2 then
+            _, str = self:giveStatus("poison")
+        end      
+        cutscene:text(str or "* Owwww that huts :(")
+    end)
     elseif name == "FLINCH" then 
         self:giveStatus("flinch")
         return "* Oof"

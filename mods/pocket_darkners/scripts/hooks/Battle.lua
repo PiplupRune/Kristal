@@ -38,16 +38,29 @@ function Battle:onStatusGiveTime(old_state)
 
     local text_lines = {}
     local poisoned = {}
+    local badly_poisoned = {}
+    
     for _, enemy in ipairs(self.enemies) do
-        if enemy.active and enemy.poison then
-            table.insert(poisoned, enemy)
-        end
+        if enemy.active then
+            if enemy.poison then
+                table.insert(poisoned, enemy)
+            elseif enemy.toxic then 
+                table.insert(badly_poisoned, enemy)
+            end
+        end 
     end
     
     if #poisoned > 0 then
         for i = 1, #poisoned do
-            poisoned[i]:takePoisonDamage() 
-            table.insert(text_lines, "* " .. poisoned[i].name .. " took poison damage!")
+            poisoned[i]:takePoisonDamage(false)
+            table.insert(text_lines, "* " .. poisoned[i].name .. " was hurt by poison!")
+        end
+    end
+
+    if #badly_poisoned > 0 then
+        for i = 1, #badly_poisoned do
+            badly_poisoned[i]:takePoisonDamage(true) 
+            table.insert(text_lines, "* " .. badly_poisoned[i].name .. " was badly hurt by poison!")
         end
     end
     
